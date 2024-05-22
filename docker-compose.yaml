@@ -6,14 +6,14 @@ services:
     image: rethinkdb:2.4.2
     restart: unless-stopped
     volumes:
-        - "rethinkdb-data:/data"
+      - "rethinkdb-data:/data"
     command: "rethinkdb --bind all --cache-size 2048"
 
   adb:
     container_name: adb
     image: devicefarmer/adb:latest
     restart: unless-stopped
-    volumes: 
+    volumes:
       - "/dev/bus/usb:/dev/bus/usb"
     privileged: true
 
@@ -27,10 +27,14 @@ services:
     environment:
       - TZ='America/Los_Angeles'
       - RETHINKDB_PORT_28015_TCP=tcp://rethinkdb:28015
-      - STF_ADMIN_EMAIL=<YOUR_EMAIL>
-      - STF_ADMIN_NAME=<YOUR_NAME>
+      - STF_ADMIN_EMAIL=administrator@fakedomain.com
+      - STF_ADMIN_NAME=administrator
+      - STF_LOCAL_ADB_HOST=adb
+      - STF_LOCAL_PUBLIC_IP=127.0.0.1
+      - STF_LOCAL_PROVIDER_MIN_PORT=7400
+      - STF_LOCAL_PROVIDER_MAX_PORT=7500
     restart: unless-stopped
-    command: stf local --adb-host adb --public-ip YOUR_IP --provider-min-port 7400 --provider-max-port 7500
+    command: stf local
 
 volumes:
   rethinkdb-data: {}

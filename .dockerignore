@@ -12,3 +12,11 @@ rethinkdb_data/
 temp/
 tmp/
 .eslintcache
+.dockerignore
+.eslintrc
+.gitignore
+doc
+test
+docker-compose.yml
+Dockerfile*
+README.md
