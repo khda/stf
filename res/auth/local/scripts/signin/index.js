@@ -10,7 +10,7 @@ module.exports = angular.module('stf.signin', [
 ])
   .config(function($routeProvider) {
     $routeProvider
-      .when('/auth/mock/', {
+      .when('/auth/local/', {
         template: require('./signin.pug')
       })
   })

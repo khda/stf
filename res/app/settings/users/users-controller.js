@@ -77,6 +77,8 @@ module.exports = function UsersCtrl(
   $scope.tmpEnv = {}
   $scope.nameRegex = /^[0-9a-zA-Z-_. ]{1,50}$/
   $scope.nameRegexStr = '/^[0-9a-zA-Z-_. ]{1,50}$/'
+  $scope.passwordRegex = /^[0-9a-zA-Z-_. ]{1,50}$/
+  $scope.passwordRegexStr = '/^[0-9a-zA-Z-_. ]{1,50}$/'
   $scope.removingFilterOptions = ['True', 'False', 'Any']
 
   $scope.mailTo = function(users) {
@@ -180,7 +182,7 @@ module.exports = function UsersCtrl(
   }
 
   $scope.initTemporaryUser = function() {
-    $scope.tmpEnv.userName = $scope.tmpEnv.userEmail = ''
+    $scope.tmpEnv.userName = $scope.tmpEnv.userEmail = $scope.tmpEnv.userPassword = ''
     $scope.tmpEnv.userTooltip = 'Bad syntax'
   }
 
@@ -209,7 +211,7 @@ module.exports = function UsersCtrl(
   $scope.createUser = function() {
     CommonService.errorWrapper(
       UsersService.createUser
-    , [$scope.tmpEnv.userName, $scope.tmpEnv.userEmail]
+    , [$scope.tmpEnv.userName, $scope.tmpEnv.userEmail, $scope.tmpEnv.userPassword]
     )
   }
 

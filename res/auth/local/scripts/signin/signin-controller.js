@@ -8,11 +8,11 @@ module.exports = function SignInCtrl($scope, $http, CommonService) {
 
   $scope.submit = function() {
     var data = {
-      name: $scope.signin.username.$modelValue
-      , email: $scope.signin.email.$modelValue
+      email: $scope.signin.email.$modelValue
+      , password: $scope.signin.password.$modelValue
     }
     $scope.invalid = false
-    $http.post('/auth/api/v1/mock', data)
+    $http.post('/auth/api/v1/local', data)
       .success(function(response) {
         $scope.error = null
         location.replace(response.redirect)

@@ -42,6 +42,16 @@
                 label.user-list-label(translate) Email
                 input.form-control.input-sm(size='35' type='email' ng-model='tmpEnv.userEmail' required)
 
+              .form-group.user-creation
+                label.user-list-label(translate) Password
+                input.form-control.input-sm(
+                  name='passwordForm'
+                  uib-tooltip="{{'Regex syntax' | translate}}: {{::passwordRegexStr}}"
+                  tooltip-placement='top'
+                  tooltip-popup-delay='500'
+                  tooltip-enable='userForm.passwordForm.$invalid'
+                  type='password' ng-model='tmpEnv.userPassword' ng-pattern="passwordRegex")
+
               .form-group.user-save
                 button.btn.btn-sm.btn-primary(
                   type='button'

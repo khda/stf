@@ -19,7 +19,10 @@ services:
 
   stf:
     container_name: stf
-    image: devicefarmer/stf
+    image: devicefarmer/stf-optimized
+    build:
+      context: .
+      dockerfile: ./Dockerfile-optimized
     ports:
       - "7100:7100"
       - "7110:7110"
@@ -29,10 +32,12 @@ services:
       - RETHINKDB_PORT_28015_TCP=tcp://rethinkdb:28015
       - STF_ADMIN_EMAIL=administrator@fakedomain.com
       - STF_ADMIN_NAME=administrator
+      - STF_ADMIN_PASSWORD=administrator
       - STF_LOCAL_ADB_HOST=adb
       - STF_LOCAL_PUBLIC_IP=127.0.0.1
       - STF_LOCAL_PROVIDER_MIN_PORT=7400
       - STF_LOCAL_PROVIDER_MAX_PORT=7500
+      - STF_LOCAL_AUTH_TYPE=local
     restart: unless-stopped
     command: stf local
 

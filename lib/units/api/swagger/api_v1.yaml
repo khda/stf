@@ -789,6 +789,11 @@ paths:
           description: User name
           required: true
           type: string
+        - name: password
+          in: query
+          description: User password
+          required: false
+          type: string
       responses:
         "201":
           description: User information
